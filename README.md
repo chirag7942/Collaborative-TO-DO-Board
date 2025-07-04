@@ -66,3 +66,73 @@ Install dependencies.
 2. Start the frontend:
 
 npm start
+
+
+# Features List and Usage Guide
+
+1. User Registration and Login
+Users can sign up and log in securely using JWT-based authentication.
+
+2. Kanban Board
+Tasks are displayed in three columns: Todo, In Progress, and Done. Users can drag and drop tasks between columns.
+
+3. Real-Time Collaboration
+All changes made by any user are instantly reflected on all connected clients using Socket.IO.
+
+4. Task Management
+Users can create, edit, delete, and assign tasks. Each task includes a title, description, status, priority, and assigned user.
+
+5. Smart Assign
+A special button that automatically assigns a task to the user with the fewest current tasks.
+
+6. Conflict Handling
+If two users try to edit the same task at the same time, the app detects the conflict and prompts users to resolve it by merging or overwriting changes.
+
+7. Activity Log
+The app logs all major actions (add, update, delete, assign) and shows the latest 20 in a live activity panel.
+
+8. Responsive Design
+The UI is responsive and works on both desktop and mobile screens.
+
+
+# Smart Assign and Conflict Handling Logic
+
+** Smart Assign
+
+The Smart Assign feature ensures tasks are distributed fairly among users. When a user clicks the "Smart Assign" button on a task:
+
+=> The system fetches all users.
+
+=> It counts how many active (incomplete) tasks each user has.
+
+=> The task is automatically assigned to the user with the fewest current tasks.
+
+=> This logic promotes balanced task allocation and reduces overload.
+
+** Conflict Handling
+
+Conflict Handling helps prevent accidental overwrites when two users edit the same task at the same time:
+
+Each task update request includes the task’s last updatedAt timestamp.
+
+The backend compares this with the current version in the database.
+
+If there's a mismatch, it returns a 409 Conflict response along with the latest server version.
+
+The frontend then prompts the user with options to:
+
+=> Overwrite the task
+
+=> Merge changes manually
+
+=> Cancel the update
+
+This ensures smooth collaboration and avoids data loss due to simultaneous edits.
+
+
+# Link to Deployed App and Demo Video
+
+Live App: https://your-app-url.vercel.app
+
+Demo Video: https://your-demo-video-link
+
