@@ -10,8 +10,10 @@ import { Server } from "socket.io";
 
 import authRoutes from "./routes/auth.js";
 
-/*
+
 import taskRoutes from "./routes/tasks.js";
+
+/*
 import logRoutes from "./routes/logs.js";
 
 import { socketHandler } from "./sockets/socketHandler.js";
@@ -42,8 +44,10 @@ app.use(cookieParser());
 // Routes
 app.use("/api/auth", authRoutes);
 
-/*
+
 app.use("/api/tasks", taskRoutes);
+
+/*
 app.use("/api/logs", logRoutes);
 
 // Socket setup
@@ -60,3 +64,6 @@ mongoose
     });
   })
   .catch((err) => console.error("DB Connection Error:", err));
+
+
+  //A kanban board is an agile project management tool designed to help visualize work, limit work-in-progress, and maximize efficiency (or flow).
